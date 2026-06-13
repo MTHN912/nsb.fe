@@ -1,0 +1,179 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "bookings": "Đặt lịch",
+    "customers": "Khách hàng",
+    "users": "Người dùng",
+    "staff": "Thông tin nhân viên",
+    "userIncome": "Thu nhập nhân viên",
+    "dealer": "Đại lý",
+    "settings": "Cài đặt",
+    "logout": "Đăng xuất"
+  },
+  "header": {
+    "searchPlaceholder": "Tìm kiếm...",
+    "notifications": "Thông báo"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Tổng quan hoạt động tiệm Nail",
+    "totalBookings": "Tổng đặt lịch",
+    "todayBookings": "Đặt lịch hôm nay",
+    "totalCustomers": "Tổng khách hàng",
+    "activeStaff": "Nhân viên hoạt động",
+    "revenue": "Doanh thu",
+    "monthlyRevenue": "Doanh thu tháng",
+    "vsLastMonth": "vs tháng trước",
+    "recentBookings": "Đặt lịch gần đây",
+    "loading": "Đang tải...",
+    "comingSoon": "Chức năng đang được phát triển..."
+  },
+  "bookings": {
+    "title": "Đặt lịch",
+    "subtitle": "Quản lý lịch đặt tiệm Nail"
+  },
+  "customers": {
+    "title": "Khách hàng",
+    "subtitle": "Quản lý thông tin khách hàng"
+  },
+  "staff": {
+    "title": "Nhân viên",
+    "subtitle": "Quản lý nhân viên tiệm Nail",
+    "addUser": "Thêm nhân viên",
+    "columns": {
+      "email": "Email",
+      "firstName": "Tên",
+      "lastName": "Họ",
+      "address": "Địa chỉ",
+      "addressLine2": "Địa chỉ dòng 2",
+      "city": "Thành phố",
+      "suburb": "Quận/Huyện",
+      "postCode": "Mã bưu chính",
+      "phone": "Số điện thoại",
+      "role": "Vai trò"
+    },
+    "form": {
+      "title": "Thêm nhân viên mới",
+      "placeholders": {
+        "firstName": "Nhập tên",
+        "lastName": "Nhập họ",
+        "address": "Nhập địa chỉ",
+        "addressLine2": "Nhập địa chỉ dòng 2",
+        "city": "Nhập thành phố",
+        "suburb": "Nhập quận/huyện",
+        "postCode": "Nhập mã bưu chính",
+        "phone": "Nhập số điện thoại",
+        "role": "Nhập vai trò"
+      },
+      "errors": {
+        "firstNameRequired": "Tên là bắt buộc",
+        "lastNameRequired": "Họ là bắt buộc",
+        "email": "Email là bắt buộc",
+        "cityRequired": "Thành phố là bắt buộc",
+        "phoneRequired": "Số điện thoại là bắt buộc",
+        "roleRequired": "Vai trò là bắt buộc"
+      },
+      "success": "Thêm nhân viên thành công",
+      "error": "Không thể thêm nhân viên"
+    }
+  },
+  "userIncome": {
+    "title": "Thu nhập nhân viên",
+    "subtitle": "Quản lý tiền công và tips của nhân viên",
+    "addIncome": "Thêm thu nhập",
+    "columns": {
+      "lastName": "Họ",
+      "firstName": "Tên",
+      "phoneNumber": "Số điện thoại",
+      "incomeDate": "Ngày",
+      "serviceIncome": "Tiền dịch vụ",
+      "tipsIncome": "Tiền tips"
+    },
+    "form": {
+      "title": "Thêm thu nhập",
+      "user": "Người dùng",
+      "services": "Dịch vụ",
+      "incomeDate": "Ngày thu nhập",
+      "serviceIncome": "Tiền dịch vụ",
+      "tipsIncome": "Tiền tips",
+      "placeholders": {
+        "user": "Chọn người dùng",
+        "services": "Chọn dịch vụ",
+        "serviceIncome": "Nhập tiền dịch vụ",
+        "tipsIncome": "Nhập tiền tips"
+      },
+      "errors": {
+        "userIdRequired": "Người dùng là bắt buộc",
+        "serviceIdsRequired": "Dịch vụ là bắt buộc",
+        "incomeDateRequired": "Ngày thu nhập là bắt buộc",
+        "serviceIncomeRequired": "Tiền dịch vụ là bắt buộc",
+        "tipsIncomeRequired": "Tiền tips là bắt buộc"
+      },
+      "success": "Thêm thu nhập thành công",
+      "error": "Không thể thêm thu nhập"
+    }
+  },
+  "dealer": {
+    "title": "Đại lý",
+    "subtitle": "Quản lý hệ thống đại lý"
+  },
+  "settings": {
+    "title": "Cài đặt",
+    "subtitle": "Cấu hình hệ thống",
+    "tabs": {
+      "packages": "Gói dịch vụ",
+      "services": "Dịch vụ"
+    },
+    "services": {
+      "columns": {
+        "name": "Tên dịch vụ",
+        "code": "Mã",
+        "description": "Mô tả",
+        "price": "Giá",
+        "duration": "Thời gian"
+      }
+    }
+  },
+  "common": {
+    "save": "Lưu",
+    "cancel": "Hủy",
+    "delete": "Xóa",
+    "edit": "Sửa",
+    "add": "Thêm",
+    "confirm": "Xác nhận",
+    "back": "Quay lại",
+    "next": "Tiếp theo",
+    "previous": "Trước",
+    "submit": "Gửi",
+    "search": "Tìm kiếm",
+    "filter": "Lọc",
+    "export": "Xuất",
+    "import": "Nhập",
+    "refresh": "Làm mới",
+    "close": "Đóng",
+    "yes": "Có",
+    "no": "Không",
+    "loading": "Đang tải...",
+    "error": "Lỗi",
+    "success": "Thành công",
+    "warning": "Cảnh báo",
+    "info": "Thông tin",
+    "comingSoon": "Chức năng đang được phát triển...",
+    "active": "Hoạt động",
+    "inactive": "Không hoạt động",
+    "actions": "Hành động",
+    "rowsPerPage": "Số dòng/trang"
+  },
+  "status": {
+    "pending": "Chờ xử lý",
+    "confirmed": "Đã xác nhận",
+    "completed": "Hoàn thành",
+    "cancelled": "Đã hủy",
+    "active": "Hoạt động",
+    "inactive": "Không hoạt động"
+  },
+  "language": {
+    "en": "English",
+    "vi": "Tiếng Việt"
+  }
+}

@@ -1,0 +1,50 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-700);
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: var(--font-size-base);
+  font-family: 'Inter', system-ui, sans-serif;
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--border-radius-md);
+  outline: none;
+  transition: border-color 0.2s ease;
+  background-color: white;
+}
+
+.input--hasIcon {
+  padding-right: var(--spacing-12);
+}
+
+.input--error {
+  border-color: var(--color-error-500);
+}
+
+.icon {
+  position: absolute;
+  right: var(--spacing-3);
+  color: var(--color-neutral-400);
+  pointer-events: none;
+}
+
+.error {
+  font-size: var(--font-size-sm);
+  color: var(--color-error-500);
+  margin-top: var(--spacing-1);
+}

@@ -1,0 +1,132 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-neutral-700);
+}
+
+.required {
+  color: var(--color-error-500);
+  margin-left: 2px;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.selectBox {
+  min-height: 48px;
+  padding: 12px 32px 12px 12px;
+  border: 1px solid var(--color-neutral-300);
+  border-radius: 6px;
+  font-size: 14px;
+  color: var(--color-neutral-500);
+  background-color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: border-color 0.2s;
+}
+
+.selectBox:hover {
+  border-color: var(--color-neutral-400);
+}
+
+.selectBox.error {
+  border-color: var(--color-error-500);
+}
+
+.selectedItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  flex: 1;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  background-color: var(--color-primary-100);
+  color: var(--color-primary-700);
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.removeChip {
+  background: none;
+  border: none;
+  color: var(--color-primary-700);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0;
+}
+
+.removeChip:hover {
+  color: var(--color-primary-900);
+}
+
+.placeholder {
+  color: var(--color-neutral-500);
+}
+
+.arrow {
+  margin-left: 8px;
+  color: var(--color-neutral-500);
+  font-size: 12px;
+}
+
+.options {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  border: 1px solid var(--color-neutral-300);
+  border-radius: 6px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.option:hover {
+  background-color: var(--color-neutral-100);
+}
+
+.option.selected {
+  background-color: var(--color-primary-50);
+}
+
+.checkbox {
+  cursor: pointer;
+}
+
+.price {
+  margin-left: auto;
+  font-size: 12px;
+  color: var(--color-neutral-600);
+  font-weight: 500;
+}
+
+.errorMessage {
+  font-size: 12px;
+  color: var(--color-error-500);
+}

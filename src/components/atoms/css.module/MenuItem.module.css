@@ -1,0 +1,21 @@
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-neutral-300);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+.menuItem:hover:not(.menuItem--active) {
+  background-color: var(--color-neutral-800);
+}
+
+.menuItem--active {
+  color: white;
+  background-color: var(--color-primary-500);
+}

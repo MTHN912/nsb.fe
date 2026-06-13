@@ -1,0 +1,55 @@
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-2);
+  background: none;
+  border: none;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-neutral-600);
+}
+
+.iconButton:hover {
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-900);
+}
+
+.iconButton--edit:hover {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-600);
+}
+
+.iconButton--delete:hover {
+  background-color: var(--color-error-50);
+  color: var(--color-error-600);
+}
+
+.iconButton--active {
+  color: var(--color-success-600);
+}
+
+.iconButton--active:hover {
+  background-color: var(--color-success-50);
+  color: var(--color-success-700);
+}
+
+.iconButton--inactive {
+  color: var(--color-neutral-400);
+}
+
+.iconButton--inactive:hover {
+  background-color: var(--color-neutral-100);
+  color: var(--color-neutral-600);
+}
+
+.iconButton--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.iconButton--disabled:hover {
+  background-color: transparent;
+  color: var(--color-neutral-600);
+}

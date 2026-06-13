@@ -1,0 +1,180 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "bookings": "Bookings",
+    "customers": "Customers",
+    "users": "Users",
+    "staff": "Users Information",
+    "userIncome": "Users Income",
+    "dealer": "Dealer",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+  "header": {
+    "searchPlaceholder": "Search...",
+    "notifications": "Notifications"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "subtitle": "Overview of nail salon activity",
+    "totalBookings": "Total Bookings",
+    "todayBookings": "Today's Bookings",
+    "totalCustomers": "Total Customers",
+    "activeStaff": "Active Staff",
+    "revenue": "Revenue",
+    "monthlyRevenue": "Monthly Revenue",
+    "vsLastMonth": "to last month",
+    "recentBookings": "Recent Bookings",
+    "loading": "Loading...",
+    "comingSoon": "Coming soon..."
+  },
+  "bookings": {
+    "title": "Bookings",
+    "subtitle": "Manage nail salon bookings"
+  },
+  "customers": {
+    "title": "Customers",
+    "subtitle": "Manage customer information"
+  },
+  "staff": {
+    "title": "Staff",
+    "subtitle": "Manage nail salon staff",
+    "addUser": "Add User",
+    "columns": {
+      "email": "Email",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "address": "Address",
+      "addressLine2": "Address Line 2",
+      "city": "City",
+      "suburb": "Suburb",
+      "postCode": "Post Code",
+      "phone": "Phone",
+      "role": "Role"
+    },
+    "form": {
+      "title": "Add New Staff",
+      "placeholders": {
+        "firstName": "Enter first name",
+        "lastName": "Enter last name",
+        "email": "Enter your email",
+        "address": "Enter address",
+        "addressLine2": "Enter address line 2",
+        "city": "Enter city",
+        "suburb": "Enter suburb",
+        "postCode": "Enter post code",
+        "phone": "Enter phone number",
+        "role": "Enter role"
+      },
+      "errors": {
+        "firstNameRequired": "First name is required",
+        "lastNameRequired": "Last name is required",
+        "email": "Email is required",
+        "cityRequired": "City is required",
+        "phoneRequired": "Phone number is required",
+        "roleRequired": "Role is required"
+      },
+      "success": "Staff added successfully",
+      "error": "Failed to add staff"
+    }
+  },
+  "userIncome": {
+    "title": "Staff Income",
+    "subtitle": "Manage staff wages and tips",
+    "addIncome": "Add Income",
+    "columns": {
+      "lastName": "Last Name",
+      "firstName": "First Name",
+      "phoneNumber": "Phone Number",
+      "incomeDate": "Date",
+      "serviceIncome": "Service Income",
+      "tipsIncome": "Tips Income"
+    },
+    "form": {
+      "title": "Add Income",
+      "user": "User",
+      "services": "Services",
+      "incomeDate": "Income Date",
+      "serviceIncome": "Service Income",
+      "tipsIncome": "Tips Income",
+      "placeholders": {
+        "user": "Select user",
+        "services": "Select services",
+        "serviceIncome": "Enter service income",
+        "tipsIncome": "Enter tips income"
+      },
+      "errors": {
+        "userIdRequired": "User is required",
+        "serviceIdsRequired": "Services are required",
+        "incomeDateRequired": "Income date is required",
+        "serviceIncomeRequired": "Service income is required",
+        "tipsIncomeRequired": "Tips income is required"
+      },
+      "success": "Income added successfully",
+      "error": "Failed to add income"
+    }
+  },
+  "dealer": {
+    "title": "Dealer",
+    "subtitle": "Manage dealer network"
+  },
+  "settings": {
+    "title": "Settings",
+    "subtitle": "System configuration",
+    "tabs": {
+      "packages": "Packages",
+      "services": "Services"
+    },
+    "services": {
+      "columns": {
+        "name": "Service Name",
+        "code": "Code",
+        "description": "Description",
+        "price": "Price",
+        "duration": "Duration"
+      }
+    }
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "submit": "Submit",
+    "search": "Search",
+    "filter": "Filter",
+    "export": "Export",
+    "import": "Import",
+    "refresh": "Refresh",
+    "close": "Close",
+    "yes": "Yes",
+    "no": "No",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Info",
+    "comingSoon": "Coming soon...",
+    "active": "Active",
+    "inactive": "Inactive",
+    "actions": "Actions",
+    "rowsPerPage": "Rows per page"
+  },
+  "status": {
+    "pending": "Pending",
+    "confirmed": "Confirmed",
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "active": "Active",
+    "inactive": "Inactive"
+  },
+  "language": {
+    "en": "English",
+    "vi": "Tiếng Việt"
+  }
+}

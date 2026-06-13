@@ -1,0 +1,7 @@
+.main {
+  margin-left: 260px;
+  margin-top: 64px;
+  min-height: calc(100vh - 64px);
+  background-color: var(--color-neutral-50);
+  padding: var(--spacing-6);
+}
