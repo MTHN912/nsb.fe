@@ -12,8 +12,8 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: localStorage.getItem('language') || 'vi',
-    fallbackLng: 'vi',
+    lng: localStorage.getItem('language') || import.meta.env.VITE_DEFAULT_LANGUAGE || 'en',
+    fallbackLng: import.meta.env.VITE_DEFAULT_LANGUAGE || 'en',
     interpolation: {
       escapeValue: false,
     },

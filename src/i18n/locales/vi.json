@@ -175,5 +175,28 @@
   "language": {
     "en": "English",
     "vi": "Tiếng Việt"
+  },
+  "login": {
+    "welcomeTitle": "Chào mừng đến với Analytics Dashboard",
+    "welcomeSubtitle": "Truy cập dashboard của bạn để quản lý phân tích kinh doanh và thông tin chi tiết",
+    "title": "Chào mừng trở lại",
+    "subtitle": "Đăng nhập vào tài khoản của bạn",
+    "email": "Email",
+    "password": "Mật khẩu",
+    "emailPlaceholder": "Nhập email của bạn",
+    "passwordPlaceholder": "Nhập mật khẩu của bạn",
+    "rememberMe": "Ghi nhớ đăng nhập",
+    "forgotPassword": "Quên mật khẩu?",
+    "signIn": "Đăng nhập",
+    "or": "hoặc",
+    "signInWithGoogle": "Đăng nhập với Google",
+    "signInWithMicrosoft": "Đăng nhập với Microsoft",
+    "errors": {
+      "emailRequired": "Email là bắt buộc",
+      "emailInvalid": "Định dạng email không hợp lệ",
+      "passwordRequired": "Mật khẩu là bắt buộc",
+      "passwordMinLength": "Mật khẩu phải có ít nhất 6 ký tự",
+      "loginFailed": "Đăng nhập thất bại. Vui lòng thử lại."
+    }
   }
 }

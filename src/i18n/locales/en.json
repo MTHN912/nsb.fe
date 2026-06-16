@@ -176,5 +176,28 @@
   "language": {
     "en": "English",
     "vi": "Tiếng Việt"
+  },
+  "login": {
+    "welcomeTitle": "Welcome to Ida Dashboard",
+    "welcomeSubtitle": "Access your dashboard to manage your business analytics and insights",
+    "title": "Welcome to Ida Nails",
+    "subtitle": "Sign in to your account",
+    "email": "Email",
+    "password": "Password",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot Password?",
+    "signIn": "Sign In",
+    "or": "or",
+    "signInWithGoogle": "Sign in with Google",
+    "signInWithMicrosoft": "Sign in with Microsoft",
+    "errors": {
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email format",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 6 characters",
+      "loginFailed": "Login failed. Please try again."
+    }
   }
 }

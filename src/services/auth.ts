@@ -12,14 +12,29 @@ export interface RegisterDto {
   password: string;
 }
 
+export interface User {
+  id: number;
+  email: string;
+  firstName: string;
+  lastName: string;
+  addressLine1: string;
+  addressLine2: string;
+  city: string;
+  suburb: string;
+  postCode: string;
+  phoneNumber: string;
+  isActive: boolean;
+  isVerified: boolean;
+  lastLoginAt: string;
+  createdAt: string;
+  updatedAt: string;
+  roles: string[];
+  dealerId: number;
+}
+
 export interface AuthResponse {
-  token: string;
-  user: {
-    id: string;
-    name: string;
-    email: string;
-    role: string;
-  };
+  access_token: string;
+  user: User;
 }
 
 export const authService = {
@@ -27,5 +42,5 @@ export const authService = {
   register: (data: RegisterDto) => apiClient.post<AuthResponse>('/auth/register', data),
   logout: () => apiClient.post('/auth/logout'),
   refreshToken: (token: string) => apiClient.post<AuthResponse>('/auth/refresh', { token }),
-  me: () => apiClient.get<AuthResponse['user']>('/auth/me'),
+  me: () => apiClient.get<User>('/auth/me'),
 };

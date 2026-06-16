@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import { DashboardLayout } from './components';
-import { Dashboard, Bookings, Customers, Staff, UserIncome, Dealer, Settings } from './pages';
+import { Dashboard, Bookings, Customers, Staff, UserIncome, Dealer, Settings, Login } from './pages';
 
 const AppContent: React.FC = () => {
   const navigate = useNavigate();
@@ -11,21 +11,29 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <DashboardLayout
-      onNavigate={handleNavigate}
-      userName="Admin User"
-    >
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/bookings" element={<Bookings />} />
-        <Route path="/customers" element={<Customers />} />
-        <Route path="/staff" element={<Staff />} />
-        <Route path="/user-income" element={<UserIncome />} />
-        <Route path="/dealer" element={<Dealer />} />
-        <Route path="/settings" element={<Settings />} />
-      </Routes>
-    </DashboardLayout>
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route
+        path="/*"
+        element={
+          <DashboardLayout
+            onNavigate={handleNavigate}
+            userName="Admin User"
+          >
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/bookings" element={<Bookings />} />
+              <Route path="/customers" element={<Customers />} />
+              <Route path="/staff" element={<Staff />} />
+              <Route path="/user-income" element={<UserIncome />} />
+              <Route path="/dealer" element={<Dealer />} />
+              <Route path="/settings" element={<Settings />} />
+            </Routes>
+          </DashboardLayout>
+        }
+      />
+    </Routes>
   );
 };
 

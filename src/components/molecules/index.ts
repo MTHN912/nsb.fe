@@ -7,3 +7,4 @@ export { Dropdown } from './Dropdown';
 export { Modal } from './Modal';
 export { FormField } from './FormField';
 export { ActionButtons } from './ActionButtons';
+export { LoginForm } from './LoginForm';
