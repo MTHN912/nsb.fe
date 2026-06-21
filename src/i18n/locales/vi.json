@@ -10,6 +10,12 @@
     "settings": "Cài đặt",
     "logout": "Đăng xuất"
   },
+  "logout": {
+    "confirmTitle": "Xác nhận đăng xuất",
+    "confirmMessage": "Bạn có chắc chắn muốn đăng xuất? Bạn sẽ cần đăng nhập lại để truy cập tài khoản của mình.",
+    "confirm": "Đăng xuất",
+    "cancel": "Hủy"
+  },
   "header": {
     "searchPlaceholder": "Tìm kiếm...",
     "notifications": "Thông báo"

@@ -10,6 +10,12 @@
     "settings": "Settings",
     "logout": "Logout"
   },
+  "logout": {
+    "confirmTitle": "Confirm Logout",
+    "confirmMessage": "Are you sure you want to logout? You will need to sign in again to access your account.",
+    "confirm": "Logout",
+    "cancel": "Cancel"
+  },
   "header": {
     "searchPlaceholder": "Search...",
     "notifications": "Notifications"
@@ -178,8 +184,8 @@
     "vi": "Tiếng Việt"
   },
   "login": {
-    "welcomeTitle": "Welcome to Ida Dashboard",
-    "welcomeSubtitle": "Access your dashboard to manage your business analytics and insights",
+    "welcomeTitle": "Manage Your Nail Business with Confidence",
+    "welcomeSubtitle": "Track appointments, monitor revenue, manage customers, and grow your salon with powerful business insights.",
     "title": "Welcome to Ida Nails",
     "subtitle": "Sign in to your account",
     "email": "Email",

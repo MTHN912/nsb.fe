@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { LayoutDashboard, Calendar, Users, Settings, LogOut, Building2, ChevronDown, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { MenuItem } from '../atoms';
+import { LogoutConfirmationModal } from './LogoutConfirmationModal';
+import { useAuth } from '../../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 import styles from './css.module/Sidebar.module.css';
 
 interface SidebarItem {
@@ -24,9 +27,12 @@ export const Sidebar: React.FC<SidebarProps> = ({
   className = '',
 }) => {
   const { t } = useTranslation();
+  const { logout, isLoading: isLoggingOut } = useAuth();
+  const navigate = useNavigate();
 
   const [activePath, setActivePath] = useState('/dashboard');
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
 
   const sidebarItems = items || [
     { icon: <LayoutDashboard size={20} />, label: t('sidebar.dashboard'), path: '/dashboard', active: activePath === '/dashboard' },
@@ -51,6 +57,20 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   const handleDropdownToggle = (label: string) => {
     setOpenDropdown(openDropdown === label ? null : label);
+  };
+
+  const handleLogoutClick = () => {
+    setShowLogoutModal(true);
+  };
+
+  const handleLogoutConfirm = async () => {
+    await logout();
+    setShowLogoutModal(false);
+    navigate('/login');
+  };
+
+  const handleLogoutCancel = () => {
+    setShowLogoutModal(false);
   };
 
   return (
@@ -100,12 +120,19 @@ export const Sidebar: React.FC<SidebarProps> = ({
       <div className={styles.footer}>
         <div
           className={styles.logoutItem}
-          onClick={() => console.log('Logout')}
+          onClick={handleLogoutClick}
         >
           <LogOut size={20} />
           <span>{t('sidebar.logout')}</span>
         </div>
       </div>
+      
+      <LogoutConfirmationModal
+        isOpen={showLogoutModal}
+        onClose={handleLogoutCancel}
+        onConfirm={handleLogoutConfirm}
+        isLoading={isLoggingOut}
+      />
     </aside>
   );
 };

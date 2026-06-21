@@ -8,3 +8,4 @@ export { Modal } from './Modal';
 export { FormField } from './FormField';
 export { ActionButtons } from './ActionButtons';
 export { LoginForm } from './LoginForm';
+export { LogoutConfirmationModal } from './LogoutConfirmationModal';

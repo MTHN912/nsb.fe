@@ -1,26 +1,42 @@
 import { useState, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { authService, LoginDto, AuthResponse } from '../services/auth';
+import { STORAGE_KEYS } from '../utils/constants';
 
 interface UseAuthReturn {
   login: (credentials: LoginDto) => Promise<void>;
-  logout: () => void;
+  logout: () => Promise<void>;
   isLoading: boolean;
   error: string | null;
   isAuthenticated: boolean;
   user: AuthResponse['user'] | null;
 }
 
+const clearAuthData = () => {
+  localStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN);
+  localStorage.removeItem(STORAGE_KEYS.AUTH_USER);
+  localStorage.removeItem(STORAGE_KEYS.AUTH_RESPONSE);
+
+  sessionStorage.removeItem(STORAGE_KEYS.ACCESS_TOKEN);
+  sessionStorage.removeItem(STORAGE_KEYS.AUTH_USER);
+  sessionStorage.removeItem(STORAGE_KEYS.AUTH_RESPONSE);
+
+  document.cookie.split(';').forEach(cookie => {
+    const cookieName = cookie.split('=')[0].trim();
+    document.cookie = `${cookieName}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  });
+};
+
 export const useAuth = (): UseAuthReturn => {
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [user, setUser] = useState<AuthResponse['user'] | null>(() => {
-    const storedUser = localStorage.getItem('auth_user');
+    const storedUser = localStorage.getItem(STORAGE_KEYS.AUTH_USER);
     return storedUser ? JSON.parse(storedUser) : null;
   });
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(() => {
-    return !!localStorage.getItem('access_token');
+    return !!localStorage.getItem(STORAGE_KEYS.ACCESS_TOKEN);
   });
 
   const login = useCallback(async (credentials: LoginDto) => {
@@ -30,17 +46,15 @@ export const useAuth = (): UseAuthReturn => {
     try {
       const response = await authService.login(credentials);
       const { access_token, user: userData } = response.data;
-      
-      // Store in localStorage
-      localStorage.setItem('access_token', access_token);
-      localStorage.setItem('auth_user', JSON.stringify(userData));
-      localStorage.setItem('auth_response', JSON.stringify(response.data));
-      
-      // Store in sessionStorage
-      sessionStorage.setItem('access_token', access_token);
-      sessionStorage.setItem('auth_user', JSON.stringify(userData));
-      sessionStorage.setItem('auth_response', JSON.stringify(response.data));
-      
+
+      localStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, access_token);
+      localStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(userData));
+      localStorage.setItem(STORAGE_KEYS.AUTH_RESPONSE, JSON.stringify(response.data));
+
+      sessionStorage.setItem(STORAGE_KEYS.ACCESS_TOKEN, access_token);
+      sessionStorage.setItem(STORAGE_KEYS.AUTH_USER, JSON.stringify(userData));
+      sessionStorage.setItem(STORAGE_KEYS.AUTH_RESPONSE, JSON.stringify(response.data));
+
       setUser(userData);
       setIsAuthenticated(true);
     } catch (err: any) {
@@ -52,19 +66,18 @@ export const useAuth = (): UseAuthReturn => {
     }
   }, [t]);
 
-  const logout = useCallback(() => {
-    // Clear localStorage
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('auth_user');
-    localStorage.removeItem('auth_response');
-    
-    // Clear sessionStorage
-    sessionStorage.removeItem('access_token');
-    sessionStorage.removeItem('auth_user');
-    sessionStorage.removeItem('auth_response');
-    
-    setUser(null);
-    setIsAuthenticated(false);
+  const logout = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      await authService.logout();
+    } catch (err) {
+      console.error('Logout API call failed:', err);
+    } finally {
+      clearAuthData();
+      setUser(null);
+      setIsAuthenticated(false);
+      setIsLoading(false);
+    }
   }, []);
 
   return {
