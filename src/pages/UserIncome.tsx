@@ -17,35 +17,92 @@ export const UserIncome: React.FC = () => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [filterStartDate, setFilterStartDate] = useState('');
   const [filterEndDate, setFilterEndDate] = useState('');
+  const [searchName, setSearchName] = useState('');
+
+  const parseName = (name: string): { firstName?: string; lastName?: string } => {
+    const trimmed = name.trim();
+    if (!trimmed) return {};
+
+    const words = trimmed.split(/\s+/);
+    if (words.length === 1) {
+      return { firstName: words[0], lastName: undefined };
+    } else if (words.length >= 2) {
+      const firstName = words.slice(0, -1).join(' ');
+      const lastName = words[words.length - 1];
+      return { firstName, lastName };
+    }
+    return {};
+  };
 
   const fetchIncomes = async (page: number) => {
     try {
       setLoading(true);
       const skip = (page - 1) * pageSize;
       const where: Record<string, any> = {};
-      
+
       if (filterStartDate || filterEndDate) {
         const dateFilter: Record<string, string> = {};
-        
+
         if (filterStartDate) {
           dateFilter.gte = getStartOfDayInTimezone(filterStartDate);
         }
-        
+
         if (filterEndDate) {
           dateFilter.lte = getEndOfDayInTimezone(filterEndDate);
         }
-        
+
         where.inComeDate = dateFilter;
       }
-      
-      const response = await incomeService.search({
-        skip,
-        take: pageSize,
-        where: Object.keys(where).length > 0 ? where : undefined,
-        orderBy: { inComeDate: 'desc' },
-      });
-      setIncomes(response.data.data);
-      setTotalIncomes(response.data.total);
+
+      if (searchName) {
+        const parsed = parseName(searchName);
+
+        if (parsed.lastName === undefined && parsed.firstName) {
+          const [firstNameResult, lastNameResult] = await Promise.all([
+            incomeService.search({
+              skip,
+              take: pageSize,
+              where: {
+                ...where,
+                user: { firstName: { contains: parsed.firstName, mode: 'insensitive' } }
+              },
+              orderBy: { inComeDate: 'desc' },
+            }),
+            incomeService.search({
+              skip,
+              take: pageSize,
+              where: {
+                ...where,
+                user: { lastName: { contains: parsed.firstName, mode: 'insensitive' } }
+              },
+              orderBy: { inComeDate: 'desc' },
+            })
+          ]);
+
+          const mergedData = [...firstNameResult.data.data, ...lastNameResult.data.data];
+          const uniqueData = mergedData.filter((item, index, self) =>
+            index === self.findIndex((t) => t.id === item.id)
+          );
+          setIncomes(uniqueData);
+          setTotalIncomes(Math.max(firstNameResult.data.total, lastNameResult.data.total));
+        } else if (parsed.firstName && parsed.lastName) {
+          where.user = {
+            firstName: { contains: parsed.firstName, mode: 'insensitive' },
+            lastName: { contains: parsed.lastName, mode: 'insensitive' }
+          };
+        }
+      }
+
+      if (!searchName || (searchName && parseName(searchName).lastName !== undefined)) {
+        const response = await incomeService.search({
+          skip,
+          take: pageSize,
+          where: Object.keys(where).length > 0 ? where : undefined,
+          orderBy: { inComeDate: 'desc' },
+        });
+        setIncomes(response.data.data);
+        setTotalIncomes(response.data.total);
+      }
     } catch (error) {
       console.error('Error fetching incomes:', error);
     } finally {
@@ -55,7 +112,7 @@ export const UserIncome: React.FC = () => {
 
   useEffect(() => {
     fetchIncomes(currentPage);
-  }, [currentPage, pageSize, filterStartDate, filterEndDate]);
+  }, [currentPage, pageSize, filterStartDate, filterEndDate, searchName]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -97,7 +154,7 @@ export const UserIncome: React.FC = () => {
     {
       key: 'incomeDate',
       title: t('userIncome.columns.incomeDate'),
-      render: (income) => new Date(income.inComeDate).toLocaleDateString(),
+      render: (income) => new Date(income.inComeDate).toLocaleDateString('en-GB', { timeZone: 'UTC' }),
     },
     {
       key: 'serviceIncome',
@@ -141,6 +198,12 @@ export const UserIncome: React.FC = () => {
       </div>
 
       <div className={styles.filters}>
+        <Input
+          type="text"
+          value={searchName}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchName(e.target.value)}
+          placeholder={t('userIncome.filters.searchName')}
+        />
         <Input
           type="date"
           value={filterStartDate}

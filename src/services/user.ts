@@ -18,8 +18,8 @@ export interface Dealer {
   addressLine1: string;
   addressLine2: string;
   city: string;
-  suburb: string;
-  postCode: string;
+  state: string;
+  zipCode: string;
   isActive: boolean;
   createdAt: string;
   updatedAt: string;
@@ -42,8 +42,8 @@ export interface User {
   addressLine1: string;
   addressLine2: string;
   city: string;
-  suburb: string;
-  postCode: string;
+  state: string;
+  zipCode: string;
   phoneNumber: string;
   avatar: string | null;
   dateOfBirth: string | null;
@@ -75,9 +75,9 @@ export interface CreateStaffDto {
   lastName: string;
   addressLine1: string;
   addressLine2?: string;
-  city: string;
-  suburb?: string;
-  postCode?: string;
+  city?: string;
+  state?: string;
+  zipCode?: string;
   phoneNumber: string;
 }
 

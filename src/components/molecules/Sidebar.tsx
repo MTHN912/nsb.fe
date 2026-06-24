@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { LayoutDashboard, Calendar, Users, Settings, LogOut, Building2, ChevronDown, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { MenuItem } from '../atoms';
 import { LogoutConfirmationModal } from './LogoutConfirmationModal';
 import { useAuth } from '../../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styles from './css.module/Sidebar.module.css';
 
 interface SidebarItem {
@@ -29,12 +29,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
   const { t } = useTranslation();
   const { logout, isLoading: isLoggingOut } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const [activePath, setActivePath] = useState('/dashboard');
+  const [activePath, setActivePath] = useState(location.pathname);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
 
-  const sidebarItems = items || [
+  const sidebarItems = useMemo(() => items || [
     { icon: <LayoutDashboard size={20} />, label: t('sidebar.dashboard'), path: '/dashboard', active: activePath === '/dashboard' },
     { icon: <Calendar size={20} />, label: t('sidebar.bookings'), path: '/bookings', active: activePath === '/bookings' },
     { icon: <Users size={20} />, label: t('sidebar.customers'), path: '/customers', active: activePath === '/customers' },
@@ -48,7 +49,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
     },
     { icon: <Building2 size={20} />, label: t('sidebar.dealer'), path: '/dealer', active: activePath === '/dealer' },
     { icon: <Settings size={20} />, label: t('sidebar.settings'), path: '/settings', active: activePath === '/settings' },
-  ];
+  ], [t, activePath]);
+
+  useEffect(() => {
+    setActivePath(location.pathname);
+
+    // Auto-open dropdown if current path is a child item
+    const itemsWithChildren = sidebarItems.filter(item => item.children && item.children.length > 0);
+    for (const item of itemsWithChildren) {
+      const hasActiveChild = item.children?.some(child => child.path === location.pathname);
+      if (hasActiveChild) {
+        setOpenDropdown(item.label);
+        break;
+      }
+    }
+  }, [location.pathname, sidebarItems]);
 
   const handleItemClick = (path: string) => {
     setActivePath(path);

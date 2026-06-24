@@ -53,8 +53,8 @@
       "address": "Địa chỉ",
       "addressLine2": "Địa chỉ dòng 2",
       "city": "Thành phố",
-      "suburb": "Quận/Huyện",
-      "postCode": "Mã bưu chính",
+      "state": "Bang/Tỉnh",
+      "zipCode": "Mã bưu chính",
       "phone": "Số điện thoại",
       "role": "Vai trò"
     },
@@ -66,8 +66,8 @@
         "address": "Nhập địa chỉ",
         "addressLine2": "Nhập địa chỉ dòng 2",
         "city": "Nhập thành phố",
-        "suburb": "Nhập quận/huyện",
-        "postCode": "Nhập mã bưu chính",
+        "state": "Nhập bang/tỉnh",
+        "zipCode": "Nhập mã bưu chính",
         "phone": "Nhập số điện thoại",
         "role": "Nhập vai trò"
       },
@@ -75,6 +75,7 @@
         "firstNameRequired": "Tên là bắt buộc",
         "lastNameRequired": "Họ là bắt buộc",
         "email": "Email là bắt buộc",
+        "addressRequired": "Địa chỉ là bắt buộc",
         "cityRequired": "Thành phố là bắt buộc",
         "phoneRequired": "Số điện thoại là bắt buộc",
         "roleRequired": "Vai trò là bắt buộc"
@@ -94,6 +95,11 @@
       "incomeDate": "Ngày",
       "serviceIncome": "Tiền dịch vụ",
       "tipsIncome": "Tiền tips"
+    },
+    "filters": {
+      "searchName": "Tìm kiếm theo tên",
+      "startDate": "Ngày bắt đầu",
+      "endDate": "Ngày kết thúc"
     },
     "form": {
       "title": "Thêm thu nhập",
@@ -131,12 +137,39 @@
       "services": "Dịch vụ"
     },
     "services": {
+      "addService": "Thêm dịch vụ",
       "columns": {
         "name": "Tên dịch vụ",
         "code": "Mã",
         "description": "Mô tả",
         "price": "Giá",
         "duration": "Thời gian"
+      },
+      "form": {
+        "title": "Thêm dịch vụ",
+        "code": "Mã",
+        "name": "Tên dịch vụ",
+        "description": "Mô tả",
+        "price": "Giá",
+        "currency": "Đơn vị tiền tệ",
+        "duration": "Thời gian",
+        "durationUnit": "Đơn vị thời gian",
+        "placeholders": {
+          "code": "Nhập mã dịch vụ",
+          "name": "Nhập tên dịch vụ",
+          "description": "Nhập mô tả",
+          "price": "Nhập giá",
+          "duration": "Nhập thời gian"
+        },
+        "errors": {
+          "codeRequired": "Mã là bắt buộc",
+          "nameRequired": "Tên dịch vụ là bắt buộc",
+          "descriptionRequired": "Mô tả là bắt buộc",
+          "priceRequired": "Giá là bắt buộc",
+          "durationRequired": "Thời gian là bắt buộc"
+        },
+        "success": "Thêm dịch vụ thành công",
+        "error": "Không thể thêm dịch vụ"
       }
     }
   },

@@ -1,4 +1,5 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 import styles from './css.module/Modal.module.css';
 
@@ -26,7 +27,7 @@ export const Modal: React.FC<ModalProps> = ({
     onClose();
   };
 
-  return (
+  return createPortal(
     <div className={`${styles.overlay} ${className}`} onClick={onClose}>
       <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
@@ -43,6 +44,7 @@ export const Modal: React.FC<ModalProps> = ({
         </div>
         {footer && <div className={styles.footer}>{footer}</div>}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };

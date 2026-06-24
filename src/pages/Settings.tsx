@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Tabs, type TabItem, type TableColumn } from '../components/atoms';
+import { Tabs, type TabItem, type TableColumn, Button } from '../components/atoms';
 import { DataTable, ActionButtons } from '../components/molecules';
+import { AddServiceModal } from '../components/organisms';
 import { serviceService, type Service } from '../services';
 import styles from './css.module/Settings.module.css';
 
@@ -13,6 +14,7 @@ export const Settings: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalServices, setTotalServices] = useState(0);
   const [pageSize, setPageSize] = useState(10);
+  const [isAddServiceModalOpen, setIsAddServiceModalOpen] = useState(false);
 
   const fetchServices = async () => {
     try {
@@ -98,6 +100,14 @@ export const Settings: React.FC = () => {
     setCurrentPage(1); // Reset to first page when changing page size
   };
 
+  const handleAddService = () => {
+    setIsAddServiceModalOpen(true);
+  };
+
+  const handleCreateServiceSuccess = () => {
+    fetchServices();
+  };
+
   const totalPages = Math.ceil(totalServices / pageSize);
 
   const tabs: TabItem[] = [
@@ -114,17 +124,24 @@ export const Settings: React.FC = () => {
       id: 'services',
       label: t('settings.tabs.services'),
       content: (
-        <DataTable
-          data={services}
-          columns={columns}
-          loading={loading}
-          keyExtractor={(service) => service.id.toString()}
-          currentPage={currentPage}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-          pageSize={pageSize}
-          onPageSizeChange={handlePageSizeChange}
-        />
+        <>
+          <div className={styles.header}>
+            <Button onClick={handleAddService}>
+              {t('settings.services.addService')}
+            </Button>
+          </div>
+          <DataTable
+            data={services}
+            columns={columns}
+            loading={loading}
+            keyExtractor={(service) => service.id.toString()}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+            pageSize={pageSize}
+            onPageSizeChange={handlePageSizeChange}
+          />
+        </>
       ),
     },
   ];
@@ -143,6 +160,12 @@ export const Settings: React.FC = () => {
           onTabChange={setActiveTab}
         />
       </div>
+
+      <AddServiceModal
+        isOpen={isAddServiceModalOpen}
+        onClose={() => setIsAddServiceModalOpen(false)}
+        onSuccess={handleCreateServiceSuccess}
+      />
     </div>
   );
 };

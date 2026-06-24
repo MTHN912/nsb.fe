@@ -53,8 +53,8 @@
       "address": "Address",
       "addressLine2": "Address Line 2",
       "city": "City",
-      "suburb": "Suburb",
-      "postCode": "Post Code",
+      "state": "State",
+      "zipCode": "Zip Code",
       "phone": "Phone",
       "role": "Role"
     },
@@ -67,8 +67,8 @@
         "address": "Enter address",
         "addressLine2": "Enter address line 2",
         "city": "Enter city",
-        "suburb": "Enter suburb",
-        "postCode": "Enter post code",
+        "state": "Enter state",
+        "zipCode": "Enter zip code",
         "phone": "Enter phone number",
         "role": "Enter role"
       },
@@ -76,6 +76,7 @@
         "firstNameRequired": "First name is required",
         "lastNameRequired": "Last name is required",
         "email": "Email is required",
+        "addressRequired": "Address is required",
         "cityRequired": "City is required",
         "phoneRequired": "Phone number is required",
         "roleRequired": "Role is required"
@@ -95,6 +96,11 @@
       "incomeDate": "Date",
       "serviceIncome": "Service Income",
       "tipsIncome": "Tips Income"
+    },
+    "filters": {
+      "searchName": "Search by name",
+      "startDate": "Start date",
+      "endDate": "End date"
     },
     "form": {
       "title": "Add Income",
@@ -132,12 +138,39 @@
       "services": "Services"
     },
     "services": {
+      "addService": "Add Service",
       "columns": {
         "name": "Service Name",
         "code": "Code",
         "description": "Description",
         "price": "Price",
         "duration": "Duration"
+      },
+      "form": {
+        "title": "Add Service",
+        "code": "Code",
+        "name": "Service Name",
+        "description": "Description",
+        "price": "Price",
+        "currency": "Currency",
+        "duration": "Duration",
+        "durationUnit": "Duration Unit",
+        "placeholders": {
+          "code": "Enter service code",
+          "name": "Enter service name",
+          "description": "Enter description",
+          "price": "Enter price",
+          "duration": "Enter duration"
+        },
+        "errors": {
+          "codeRequired": "Code is required",
+          "nameRequired": "Service name is required",
+          "descriptionRequired": "Description is required",
+          "priceRequired": "Price is required",
+          "durationRequired": "Duration is required"
+        },
+        "success": "Service added successfully",
+        "error": "Failed to add service"
       }
     }
   },

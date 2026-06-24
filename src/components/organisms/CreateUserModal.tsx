@@ -23,8 +23,8 @@ export const CreateUserModal: React.FC<CreateUserModalProps> = ({
     addressLine1: '',
     addressLine2: '',
     city: '',
-    suburb: '',
-    postCode: '',
+    state: '',
+    zipCode: '',
     phoneNumber: '',
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -50,8 +50,8 @@ export const CreateUserModal: React.FC<CreateUserModalProps> = ({
     if (!formData.lastName.trim()) {
       newErrors.lastName = t('staff.form.errors.lastNameRequired');
     }
-    if (!formData.city.trim()) {
-      newErrors.city = t('staff.form.errors.cityRequired');
+    if (!formData.addressLine1.trim()) {
+      newErrors.addressLine1 = t('staff.form.errors.addressRequired');
     }
     if (!formData.phoneNumber.trim()) {
       newErrors.phoneNumber = t('staff.form.errors.phoneRequired');
@@ -73,9 +73,9 @@ export const CreateUserModal: React.FC<CreateUserModalProps> = ({
         lastName: formData.lastName,
         addressLine1: formData.addressLine1,
         addressLine2: formData.addressLine2 || undefined,
-        city: formData.city,
-        suburb: formData.suburb || undefined,
-        postCode: formData.postCode || undefined,
+        city: formData.city || undefined,
+        state: formData.state || undefined,
+        zipCode: formData.zipCode || undefined,
         phoneNumber: formData.phoneNumber,
       });
       toast.success(t('staff.form.success'), t('common.success'));
@@ -87,8 +87,8 @@ export const CreateUserModal: React.FC<CreateUserModalProps> = ({
         addressLine1: '',
         addressLine2: '',
         city: '',
-        suburb: '',
-        postCode: '',
+        state: '',
+        zipCode: '',
         phoneNumber: '',
       });
     } catch (error: any) {
@@ -145,6 +145,8 @@ export const CreateUserModal: React.FC<CreateUserModalProps> = ({
 
         <FormField
           label={t('staff.columns.address')}
+          error={errors.addressLine1}
+          required
         >
           <Input
             value={formData.addressLine1}
@@ -165,8 +167,6 @@ export const CreateUserModal: React.FC<CreateUserModalProps> = ({
 
         <FormField
           label={t('staff.columns.city')}
-          error={errors.city}
-          required
         >
           <Input
             value={formData.city}
@@ -176,22 +176,22 @@ export const CreateUserModal: React.FC<CreateUserModalProps> = ({
         </FormField>
 
         <FormField
-          label={t('staff.columns.suburb')}
+          label={t('staff.columns.state')}
         >
           <Input
-            value={formData.suburb}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange('suburb', e.target.value)}
-            placeholder={t('staff.form.placeholders.suburb')}
+            value={formData.state}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange('state', e.target.value)}
+            placeholder={t('staff.form.placeholders.state')}
           />
         </FormField>
 
         <FormField
-          label={t('staff.columns.postCode')}
+          label={t('staff.columns.zipCode')}
         >
           <Input
-            value={formData.postCode}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange('postCode', e.target.value)}
-            placeholder={t('staff.form.placeholders.postCode')}
+            value={formData.zipCode}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleChange('zipCode', e.target.value)}
+            placeholder={t('staff.form.placeholders.zipCode')}
           />
         </FormField>
 

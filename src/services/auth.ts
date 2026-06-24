@@ -20,8 +20,8 @@ export interface User {
   addressLine1: string;
   addressLine2: string;
   city: string;
-  suburb: string;
-  postCode: string;
+  state: string;
+  zipCode: string;
   phoneNumber: string;
   isActive: boolean;
   isVerified: boolean;
@@ -41,6 +41,6 @@ export const authService = {
   login: (data: LoginDto) => apiClient.post<AuthResponse>('/auth/login', data),
   register: (data: RegisterDto) => apiClient.post<AuthResponse>('/auth/register', data),
   logout: () => apiClient.post('/auth/logout'),
-  refreshToken: (token: string) => apiClient.post<AuthResponse>('/auth/refresh', { token }),
+  refreshToken: () => apiClient.post<AuthResponse>('/auth/refresh'),
   me: () => apiClient.get<User>('/auth/me'),
 };

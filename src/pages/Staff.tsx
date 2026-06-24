@@ -81,17 +81,10 @@ export const Staff: React.FC = () => {
     {
       key: 'address',
       title: t('staff.columns.address'),
-      render: (user) => (
-        <>
-          {user.addressLine1}
-          {user.addressLine2 && `, ${user.addressLine2}`}
-        </>
-      ),
-    },
-    {
-      key: 'city',
-      title: t('staff.columns.city'),
-      render: (user) => user.city,
+      render: (user) => {
+        const parts = [user.addressLine1, user.city, user.state, user.zipCode].filter(Boolean);
+        return parts.join(', ');
+      },
     },
     {
       key: 'phone',
@@ -106,8 +99,8 @@ export const Staff: React.FC = () => {
     {
       key: 'actions',
       title: t('common.actions'),
-      headerAlign: 'center',
-      align: 'center',
+      // headerAlign: 'center',
+      // align: 'center',
       render: (user) => (
         <ActionButtons
           onEdit={() => console.log('Edit user:', user.id)}
