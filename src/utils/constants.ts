@@ -6,3 +6,7 @@ export const STORAGE_KEYS = {
 } as const;
 
 export const STORAGE_KEY_VALUES = Object.values(STORAGE_KEYS);
+
+export const ROLE_CODES = {
+  STAFF: 'staff',
+} as const;

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Modal, FormField } from '../molecules';
-import { Button, Input, Select, MultiSelect } from '../atoms';
+import { Button, Input, SearchableSelect, SearchableMultiSelect } from '../atoms';
 import { incomeService } from '../../services/income';
 import { userService, type User } from '../../services/user';
 import { serviceService, type Service } from '../../services/service';
 import { toast } from '../atoms/ToastContainer';
 import { storage } from '../../utils/storage';
+import { ROLE_CODES } from '../../utils/constants';
 
 export interface AddIncomeModalProps {
   isOpen: boolean;
@@ -47,7 +48,7 @@ export const AddIncomeModal: React.FC<AddIncomeModalProps> = ({
           roles: {
             some: {
               role: {
-                code: 'staff'
+                code: ROLE_CODES.STAFF
               }
             }
           }
@@ -192,7 +193,7 @@ export const AddIncomeModal: React.FC<AddIncomeModalProps> = ({
           error={errors.userId}
           required
         >
-          <Select
+          <SearchableSelect
             value={formData.userId}
             onChange={(value) => handleChange('userId', value)}
             placeholder={t('userIncome.form.placeholders.user')}
@@ -220,7 +221,7 @@ export const AddIncomeModal: React.FC<AddIncomeModalProps> = ({
           error={errors.serviceIds}
           required
         >
-          <MultiSelect
+          <SearchableMultiSelect
             selectedValues={formData.serviceIds}
             onChange={handleServiceChange}
             placeholder={t('userIncome.form.placeholders.services')}

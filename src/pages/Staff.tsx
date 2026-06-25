@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { userService, User } from '../services/user';
 import { DataTable, Button, CreateUserModal, ActionButtons } from '../components';
 import { TableColumn } from '../components/atoms';
+import { ROLE_CODES } from '../utils/constants';
 import styles from './css.module/Staff.module.css';
 
 export const Staff: React.FC = () => {
@@ -25,7 +26,7 @@ export const Staff: React.FC = () => {
           roles: {
             some: {
               role: {
-                code: 'staff'
+                code: ROLE_CODES.STAFF
               }
             }
           }

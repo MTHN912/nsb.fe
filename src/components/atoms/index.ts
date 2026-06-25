@@ -14,3 +14,5 @@ export type { ToastType } from './Toast';
 export { toast } from './ToastContainer';
 export { Select, type SelectOption } from './Select';
 export { MultiSelect, type MultiSelectOption } from './MultiSelect';
+export { SearchableSelect, type SearchableSelectOption } from './SearchableSelect';
+export { SearchableMultiSelect, type SearchableMultiSelectOption } from './SearchableMultiSelect';

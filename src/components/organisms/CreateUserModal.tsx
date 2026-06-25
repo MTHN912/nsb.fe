@@ -4,6 +4,8 @@ import { Modal, FormField } from '../molecules';
 import { Button, Input } from '../atoms';
 import { userService } from '../../services/user';
 import { toast } from '../atoms/ToastContainer';
+import { storage } from '../../utils/storage';
+import { ROLE_CODES } from '../../utils/constants';
 
 export interface CreateUserModalProps {
   isOpen: boolean;
@@ -78,6 +80,23 @@ export const CreateUserModal: React.FC<CreateUserModalProps> = ({
         zipCode: formData.zipCode || undefined,
         phoneNumber: formData.phoneNumber,
       });
+
+      const response = await userService.search({
+        skip: 0,
+        take: 100,
+        where: {
+          roles: {
+            some: {
+              role: {
+                code: ROLE_CODES.STAFF
+              }
+            }
+          }
+        },
+        orderBy: { createdAt: 'desc' },
+      });
+      storage.set('staff_users', response.data.data);
+
       toast.success(t('staff.form.success'), t('common.success'));
       onSuccess?.();
       onClose();

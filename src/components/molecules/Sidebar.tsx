@@ -53,8 +53,6 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
   useEffect(() => {
     setActivePath(location.pathname);
-
-    // Auto-open dropdown if current path is a child item
     const itemsWithChildren = sidebarItems.filter(item => item.children && item.children.length > 0);
     for (const item of itemsWithChildren) {
       const hasActiveChild = item.children?.some(child => child.path === location.pathname);
