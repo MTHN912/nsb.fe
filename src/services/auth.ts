@@ -43,4 +43,5 @@ export const authService = {
   logout: () => apiClient.post('/auth/logout'),
   refreshToken: () => apiClient.post<AuthResponse>('/auth/refresh'),
   me: () => apiClient.get<User>('/auth/me'),
+  getProfile: () => apiClient.get<User>('/users/profile'),
 };
