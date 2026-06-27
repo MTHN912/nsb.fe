@@ -88,6 +88,7 @@
     "title": "Thu nhập nhân viên",
     "subtitle": "Quản lý tiền công và tips của nhân viên",
     "addIncome": "Thêm thu nhập",
+    "searchIncome": "Xem thu nhập nhân viên",
     "columns": {
       "lastName": "Họ",
       "firstName": "Tên",
@@ -115,6 +116,10 @@
         "tipsIncome": "Nhập tiền tips"
       },
       "errors": {
+        "userRequired": "Người dùng là bắt buộc",
+        "startDateRequired": "Ngày bắt đầu là bắt buộc",
+        "endDateRequired": "Ngày kết thúc là bắt buộc",
+        "endDateAfterStart": "Ngày kết thúc phải sau ngày bắt đầu",
         "userIdRequired": "Người dùng là bắt buộc",
         "serviceIdsRequired": "Dịch vụ là bắt buộc",
         "incomeDateRequired": "Ngày thu nhập là bắt buộc",
@@ -123,6 +128,17 @@
       },
       "success": "Thêm thu nhập thành công",
       "error": "Không thể thêm thu nhập"
+    },
+    "searchModal": {
+      "title": "Tìm kiếm thu nhập",
+      "startDate": "Ngày bắt đầu",
+      "endDate": "Ngày kết thúc",
+      "noResults": "Không tìm thấy bản ghi thu nhập trong khoảng thời gian đã chọn"
+    },
+    "summary": {
+      "totalServiceIncome": "Tổng tiền dịch vụ",
+      "totalTips": "Tổng tiền tips",
+      "totalIncome": "Tổng thu nhập"
     }
   },
   "dealer": {
@@ -185,6 +201,7 @@
     "previous": "Trước",
     "submit": "Gửi",
     "search": "Tìm kiếm",
+    "newSearch": "Tìm kiếm mới",
     "filter": "Lọc",
     "export": "Xuất",
     "import": "Nhập",

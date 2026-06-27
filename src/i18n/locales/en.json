@@ -89,6 +89,7 @@
     "title": "Staff Income",
     "subtitle": "Manage staff wages and tips",
     "addIncome": "Add Income",
+    "searchIncome": "Search Income",
     "columns": {
       "lastName": "Last Name",
       "firstName": "First Name",
@@ -116,6 +117,10 @@
         "tipsIncome": "Enter tips income"
       },
       "errors": {
+        "userRequired": "User is required",
+        "startDateRequired": "Start date is required",
+        "endDateRequired": "End date is required",
+        "endDateAfterStart": "End date must be after start date",
         "userIdRequired": "User is required",
         "serviceIdsRequired": "Services are required",
         "incomeDateRequired": "Income date is required",
@@ -124,6 +129,17 @@
       },
       "success": "Income added successfully",
       "error": "Failed to add income"
+    },
+    "searchModal": {
+      "title": "Search Income",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "noResults": "No income records found for the selected period"
+    },
+    "summary": {
+      "totalServiceIncome": "Total Service Income",
+      "totalTips": "Total Tips",
+      "totalIncome": "Total Income"
     }
   },
   "dealer": {
@@ -178,6 +194,8 @@
     "save": "Save",
     "cancel": "Cancel",
     "delete": "Delete",
+    "search": "Search",
+    "newSearch": "New Search",
     "edit": "Edit",
     "add": "Add",
     "confirm": "Confirm",
@@ -185,7 +203,6 @@
     "next": "Next",
     "previous": "Previous",
     "submit": "Submit",
-    "search": "Search",
     "filter": "Filter",
     "export": "Export",
     "import": "Import",

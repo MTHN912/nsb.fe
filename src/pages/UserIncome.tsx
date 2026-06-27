@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { incomeService } from '../services/income';
 import type { UserIncomeData } from '../services/income';
-import { DataTable, Button, ActionButtons, AddIncomeModal, Input } from '../components';
+import { DataTable, Button, ActionButtons, AddIncomeModal, SearchIncomeModal, Input } from '../components';
 import { TableColumn } from '../components/atoms';
 import { getStartOfDayInTimezone, getEndOfDayInTimezone } from '../utils/timezone';
 import styles from './css.module/UserIncome.module.css';
@@ -15,6 +15,7 @@ export const UserIncome: React.FC = () => {
   const [totalIncomes, setTotalIncomes] = useState(0);
   const [pageSize, setPageSize] = useState(10);
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
   const [filterStartDate, setFilterStartDate] = useState('');
   const [filterEndDate, setFilterEndDate] = useState('');
   const [searchName, setSearchName] = useState('');
@@ -135,6 +136,22 @@ export const UserIncome: React.FC = () => {
     fetchIncomes(currentPage);
   };
 
+  const handleSearchIncome = async (userId: string, startDate: string, endDate: string) => {
+    const response = await incomeService.search({
+      skip: 0,
+      take: 1000,
+      where: {
+        userId: parseInt(userId),
+        inComeDate: {
+          gte: getStartOfDayInTimezone(startDate),
+          lte: getEndOfDayInTimezone(endDate),
+        },
+      },
+      orderBy: { inComeDate: 'desc' },
+    });
+    return response.data.data;
+  };
+
   const columns: TableColumn<UserIncomeData>[] = [
     {
       key: 'lastName',
@@ -167,7 +184,7 @@ export const UserIncome: React.FC = () => {
     {
       key: 'tipsIncome',
       title: t('userIncome.columns.tipsIncome'),
-      render: (income) => `$${income.staffTip.amount.toFixed(2)}`,
+      render: (income) => `$${(income.staffTip?.amount || 0).toFixed(2)}`,
     },
     {
       key: 'actions',
@@ -192,9 +209,14 @@ export const UserIncome: React.FC = () => {
           <h1 className={styles.title}>{t('userIncome.title')}</h1>
           <p className={styles.subtitle}>{t('userIncome.subtitle')}</p>
         </div>
-        <Button onClick={handleAddIncome}>
-          {t('userIncome.addIncome')}
-        </Button>
+        <div className={styles.headerButtons}>
+          <Button variant="secondary" onClick={() => setIsSearchModalOpen(true)}>
+            {t('userIncome.searchIncome')}
+          </Button>
+          <Button onClick={handleAddIncome}>
+            {t('userIncome.addIncome')}
+          </Button>
+        </div>
       </div>
 
       <div className={styles.filters}>
@@ -234,6 +256,12 @@ export const UserIncome: React.FC = () => {
         isOpen={isAddModalOpen}
         onClose={() => setIsAddModalOpen(false)}
         onSuccess={handleCreateIncomeSuccess}
+      />
+
+      <SearchIncomeModal
+        isOpen={isSearchModalOpen}
+        onClose={() => setIsSearchModalOpen(false)}
+        onSearch={handleSearchIncome}
       />
     </div>
   );
